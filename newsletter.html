@@ -414,11 +414,15 @@
     }
     .promo-desc {
       font-size: 13.5px;
-      line-height: 1.75;
+      line-height: 1.6;
       color: #666;
       font-weight: 300;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       flex: 1;
+    }
+
+    .promo-desc + .promo-desc {
+      margin-top: 4px;
     }
     .promo-expires {
       font-size: 11.5px;
@@ -541,6 +545,21 @@
       50% { transform: scale(1.06); }
       100% { transform: scale(1); }
     }
+      .promo-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .promo-banner {
+      overflow: hidden;
+      padding: 0; /* remove emoji spacing */
+    }
+        /* 👇 THIS IS THE MAGIC */
+    .promo-card:hover .promo-banner img {
+      transform: scale(1.06);
+      filter: brightness(1.03);
+    }
   </style>
 </head>
 <body>
@@ -589,63 +608,79 @@
 
     <!-- PLACEHOLDER PROMO 1 -->
     <div class="promo-card">
-      <div class="promo-banner peach">
-        🌸
-        <span class="promo-badge active">Active Now</span>
+      <div class="promo-banner">
+        <img src="flash-friday-deals.png" alt="Flash Friday Deals">
       </div>
       <div class="promo-body">
-        <span class="promo-label">Spring Special</span>
-        <h2 class="promo-title">Spring Reset Facial — $20 Off</h2>
-        <p class="promo-desc">Refresh your skin after a long Connecticut winter. Book any Classic or Euphoria Facial this April and save $20. Perfect timing to treat dehydration and dullness caused by months of dry indoor heat.</p>
-        <p class="promo-expires">Offer valid through April 30, 2026 · New &amp; returning clients</p>
-        <a href="https://book.squareup.com/appointments/akl2v1sa6lvvyg/location/LPYHQ6EDHX53D/services" class="promo-cta">Book &amp; Save</a>
+       <span class="promo-label">Flash Friday Deals</span>
+      <h2 class="promo-title">Every Friday, a different service is featured at 20% OFF</h2>
+      <p class="promo-desc">
+        Simple rules:<br>
+        ✔ Must be purchased that Friday<br>
+        ✔ Must be booked before the next Friday drop
+      </p>
+      <p class="promo-desc">
+        No exceptions — once the deal is gone, it’s gone.
+      </p>
+      <p class="promo-desc">
+        ✨ New services are featured weekly, so there’s always something to look forward to.
+      </p>
+      <a href="https://book.squareup.com/appointments/akl2v1sa6lvvyg/location/LPYHQ6EDHX53D/services" class="promo-cta">
+        View This Week’s Deal
+      </a>
       </div>
     </div>
 
+     <!-- PLACEHOLDER PROMO 2 -->
 <div class="promo-card">
-  <div class="promo-banner sage">
-    ✨
-    <span class="promo-badge">Refer a Friend</span>
-  </div>
+    <div class="promo-banner">
+        <img src="refer-a-friend.PNG" alt="Refer a friend">
+      </div>
 
   <div class="promo-body">
     <span class="promo-label">Referral Program</span>
-
-    <h2 class="promo-title">Refer a Friend or Leave a Review — Save $15</h2>
-
-    <!-- REFERRAL (TOP) -->
-    <p class="promo-desc">
-      Refer a friend and you both receive 
-      <span class="discount-pill">$15 OFF</span> 
-      your next service. Just mention your referral at booking or checkout and your savings will be applied.
-    </p>
-
-    <!-- REVIEW (BOTTOM) -->
-    <p class="promo-desc" style="margin-top:16px;">
-      Already love your results? Leave a review and receive another 
-      <span class="discount-pill">$15 OFF</span> your next visit.
-    </p>
-
-    <a href="https://www.google.com/maps/place//data=!4m3!3m2!1s0x44340409f87b153f:0x8562da2a037d0696!12e1?source=g.page.m.ia._&laa=nmx-review-solicitation-ia2" 
-       class="promo-cta sage" 
-       target="_blank">
-      Leave a Review
-    </a>
+      <h2 class="promo-title">Give $15, Get $15</h2>
+      <p class="promo-desc">
+        Refer a friend and you’ll both receive 
+        <span class="discount-pill">$15 OFF</span> 
+        your next service.
+      </p>
+      <p class="promo-desc">
+        Already loving your results?<br>
+        Leave a review and receive another 
+        <span class="discount-pill">$15 OFF</span> your next visit.
+      </p>
+      <p class="promo-desc">
+        ✔ Mention your referral at booking or checkout
+      </p>
+      <a href="https://www.google.com/maps/place//data=!4m3!3m2!1s0x44340409f87b153f:0x8562da2a037d0696!12e1?source=g.page.m.ia._&laa=nmx-review-solicitation-ia2" 
+        class="promo-cta sage" 
+        target="_blank">
+        Leave a Review
+      </a>
   </div>
 </div>
 
     <!-- PLACEHOLDER PROMO 3 -->
     <div class="promo-card">
-      <div class="promo-banner lavender">
-        💆
-        <span class="promo-badge">First Visit</span>
+      <div class="promo-banner">
+        <img src="first-visit.PNG" alt="First Visit Promo">
       </div>
       <div class="promo-body">
         <span class="promo-label">New Client Offer</span>
-        <h2 class="promo-title">First-Time Client Welcome Package</h2>
-        <p class="promo-desc">New to Techniq Skin &amp; Beauty? Book your first facial and receive a complimentary skin consultation plus a personalized at-home routine guide tailored to your skin type and concerns.</p>
-        <p class="promo-expires">First visit only · Cannot be combined with other offers</p>
-        <a href="https://book.squareup.com/appointments/akl2v1sa6lvvyg/location/LPYHQ6EDHX53D/services" class="promo-cta">Book First Visit</a>
+        <h2 class="promo-title">First-Time Client Welcome Experience</h2>
+        <p class="promo-desc">
+          New to Techniq Skin &amp; Beauty? Start your journey the right way.
+        </p>
+        <p class="promo-desc">
+          Enjoy your first facial plus a complimentary skin consultation and a personalized at-home routine tailored to your skin.
+        </p>
+        <p class="promo-desc">
+        First visit only. Cannot be combined with other offers.
+        </p>
+        <a href="https://book.squareup.com/appointments/akl2v1sa6lvvyg/location/LPYHQ6EDHX53D/services" class="promo-cta">
+          Book Your First Visit
+        </a>
       </div>
     </div>
 

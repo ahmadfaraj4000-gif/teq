@@ -453,34 +453,47 @@
     }
     .hero-photo-ph svg { opacity: 0.35; }
 
-    /* ── STORY STRIP ── */
-    .story-strip {
-      border-top: 1px solid rgba(0,0,0,0.07);
-      border-bottom: 1px solid rgba(0,0,0,0.07);
-      padding: 56px 32px;
-      background: rgba(255,255,255,0.55);
-    }
-    .story-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 56px;
-      align-items: start;
-    }
-    .story-label-col {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.9rem;
-      font-weight: 400;
-      color: #9f7e6b;
-      line-height: 1.2;
-    }
-    .story-text {
-      font-size: 15px;
-      line-height: 1.85;
-      color: #555;
-      font-weight: 300;
-    }
+  /* ── STORY STRIP ── */
+.story-strip {
+  border-top: 1px solid rgba(0,0,0,0.07);
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  padding: 32px 32px 56px;
+  background: rgba(255,255,255,0.55);
+}
+
+.story-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.story-label-col {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem;
+  font-weight: 400;
+  color: #9f7e6b;
+  line-height: 1.2;
+}
+
+.story-text {
+  max-width: 900px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #555;
+  font-weight: 300;
+}
+
+.story-text p {
+  margin: 0 0 12px;
+  line-height: 1.75;
+}
+
+.story-text p:last-child {
+  margin-bottom: 100;
+}
 
     /* ── SERVICES ── */
     .services-section {
@@ -654,7 +667,7 @@
       .footer-bottom { flex-direction: column; }
       .nav-right .btn-secondary:not(:last-child) { display: none; }
     }
-        /* ── FLOATING BOOK BUTTON ── */
+    /* ── FLOATING BOOK BUTTON ── */
     .floating-book-btn {
       position: fixed;
       bottom: 20px;
@@ -664,23 +677,31 @@
       padding: 14px 22px;
       font-size: 14px;
       font-weight: 600;
-
       border-radius: 30px;
       text-decoration: none;
 
       background: #EBBBA8;
       color: #2f2f2f;
-
       box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-      transition: all 0.25s ease;
+
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px) scale(0.98);
+      transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.25s ease;
+    }
+
+    .floating-book-btn.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
     }
 
     .floating-book-btn:hover {
-      transform: translateY(-2px);
+      transform: translateY(-2px) scale(1);
       box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     }
 
-    /* MOBILE VERSION (bigger + full width) */
+    /* MOBILE VERSION */
     @media (max-width: 768px) {
       .floating-book-btn {
         left: 20px;
@@ -760,7 +781,16 @@
       color: #666;
       margin-bottom: 26px;
     }
+    /* Pulse animation */
+    @keyframes pulse {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.04); }
+      100% { transform: scale(1); }
+    }
 
+    .floating-book-btn.pulse {
+      animation: pulse 2s ease-in-out infinite;
+    }
 </style>
 </head>
 
@@ -808,12 +838,14 @@
       Clear, glowing skin.<br><em>starts here.</em>
     </h2>
     <p class="hero-sub">
-     Shaniqua Faraj helps clients achieve clearer, healthier-looking skin through corrective facials, Brazilian waxing, and advanced treatments tailored to your unique skin needs.
+    My name is Shaniqua Faraj, and I help clients achieve clear, healthy skin through customized treatments designed for real life. Whether you’re maintaining your glow or targeting specific concerns, every service is tailored to keep your skin consistent, balanced, and thriving.
     </p>
     <div class="hero-actions">
-      <a href="https://book.squareup.com/appointments/akl2v1sa6lvvyg/location/LPYHQ6EDHX53D/services" class="btn-primary">Book an Appointment</a>
-      <a href="#services" class="btn-secondary">Our Services</a>
+      <a href="https://book.squareup.com/appointments/akl2v1sa6lvvyg/location/LPYHQ6EDHX53D/services" class="btn-primary">Book Now</a>
+      <a href="#services" class="btn-secondary">View Services</a>
+      
     </div>
+    
   </div>
     <div class="hero-right">
     <div class="hero-logo-wrap">
@@ -822,6 +854,7 @@
         alt="Shaniqua Faraj Licensed Esthetician Vernon CT"
         onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;hero-photo-ph&quot;><svg width=&quot;64&quot; height=&quot;64&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;#EBBBA8&quot; stroke-width=&quot;1.2&quot;><circle cx=&quot;12&quot; cy=&quot;8&quot; r=&quot;4&quot;/><path d=&quot;M4 20c0-4 3.6-7 8-7s8 3 8 7&quot;/></svg><span>Photo of Shaniqua Faraj<br>coming soon</span></div>'">
     </div>
+  
   </div>
 </section>
 
@@ -829,14 +862,13 @@
 <div class="story-strip">
   <div class="story-inner">
     <div class="story-label-col">Our<br>Story</div>
-    <p class="story-text">
-      Techniq Skin & Beauty is located at 49 Tolland Turnpike, Vernon, CT, and is owned and operated by licensed esthetician Shaniqua Faraj. 
+  <div class="story-text">
+  <p>Techniq Skin & Beauty was created with one goal in mind: real results that last.</p>
 
-Each service is built around a results-focused approach, starting with a thorough consultation to understand your skin and create a treatment plan that works long-term — not just temporarily.
+  <p>Located in Vernon, CT, and proudly serving clients from Vernon, Manchester, Rockville, and surrounding areas, every service is built on a results-driven approach tailored to your unique skin.</p>
 
-Proudly serving clients across Vernon, Manchester, Rockville, and surrounding areas.
-    </p>
-  </div>
+  <p>No rushed treatments. No guesswork. Every appointment begins with a thoughtful consultation to understand your skin, your concerns, and your goals—so we can create a treatment plan focused on long-term progress, not temporary results.</p>
+</div>
 </div>
 
 <!-- ══ SERVICES ══ -->
@@ -848,10 +880,9 @@ Proudly serving clients across Vernon, Manchester, Rockville, and surrounding ar
     </div>
     <div class="services-grid">
       <div class="service-card">
-        <div class="service-icon">🌿</div>
         <h3>Facial Services</h3>
-        <p class="service-tagline">Where skin care meets self care.</p>
-        <p>Every facial is personally tailored — from soothing relaxation treatments to advanced corrective modalities.</p>
+        <p class="service-tagline">Customized for your skin, every time.</p>
+        <p>Every facial is tailored to your skin’s current needs, whether you’re maintaining your glow or targeting concerns like acne, texture, or hyperpigmentation. No two treatments are the same, because your skin isn’t.</p>
         <ul class="service-items">
           <li><strong>Classic Facial</strong></li>
           <li><strong>Euphoria Facial</strong></li>
@@ -862,10 +893,10 @@ Proudly serving clients across Vernon, Manchester, Rockville, and surrounding ar
         <a href="https://book.squareup.com/appointments/akl2v1sa6lvvyg/location/LPYHQ6EDHX53D/services" class="service-book-link">Book a Facial</a>
       </div>
       <div class="service-card">
-        <div class="service-icon">✨</div>
         <h3>Wax Services</h3>
         <p class="service-tagline">Smooth skin starts here.</p>
-        <p>Professional-grade waxing with products that minimize discomfort and leave skin silky smooth.</p>
+        <p>Professional waxing services designed to be as comfortable and effective as possible, leaving your skin smooth, clean, and irritation-free.</p>
+        <ul class="service-items">
         <ul class="service-items">
           <li><strong>Underarm Wax</strong></li>
           <li><strong>Lip &amp; Chin Wax</strong></li>
@@ -883,7 +914,7 @@ Proudly serving clients across Vernon, Manchester, Rockville, and surrounding ar
 <section class="gallery-section">
   <div class="section-header">
     <span class="section-eyebrow">Client Results</span>
-    <h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:400;color:#2f2f2f;">Real Skin. Real Results.</h2>
+    <h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:400;color:#2f2f2f;">Real Skin. Real Results. Real Confidence.</h2>
   </div>
   <div class="gallery-grid">
     <div class="gallery-item">
@@ -912,14 +943,10 @@ Proudly serving clients across Vernon, Manchester, Rockville, and surrounding ar
 <section class="testimonials-section">
   <div class="section-header">
     <span class="section-eyebrow">Kind Words</span>
-    <h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:400;color:#2f2f2f;">What Clients Say</h2>
+    <h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:400;color:#2f2f2f;">Real Experiences</h2>
   </div>
   <div class="slider-wrap">
     <div class="slide active">
-      <blockquote>"Excellent wax experience for my first time and I have left satisfied every time after. Shaniqua is professional, efficient, knowledgeable and extremely sanitary."</blockquote>
-      <cite>— K.R.</cite>
-    </div>
-    <div class="slide">
       <blockquote>"It was my first experience getting a facial and Shaniqua was extremely attentive as well as knowledgeable. I left feeling more relaxed and I'm already looking forward to going back."</blockquote>
       <cite>— Monique B.</cite>
     </div>
@@ -942,10 +969,8 @@ Proudly serving clients across Vernon, Manchester, Rockville, and surrounding ar
 <section class="final-cta">
   <div class="final-cta-inner">
     <h2>Ready To Book?</h2>
-    <p>
-      Take the next step toward clearer, healthier-looking skin.
-      New clients are welcome, and weekly availability can fill quickly.
-      Book online now to view open appointments and secure your preferred time.
+   <p>
+      Healthy skin doesn’t happen in one appointment — it starts with consistency. If you’ve been thinking about starting your skincare journey or getting back on track, this is your sign. New clients are always welcome, and availability fills quickly.
     </p>
     <a href="https://book.squareup.com/appointments/akl2v1sa6lvvyg/location/LPYHQ6EDHX53D/services" class="btn-primary">
       Book Your Appointment
@@ -1024,8 +1049,58 @@ Proudly serving clients across Vernon, Manchester, Rockville, and surrounding ar
     nextBtn.addEventListener('click', () => goTo(current + 1));
   }
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.querySelector(".floating-book-btn");
+  if (!btn) return;
+
+  let lastScrollY = window.scrollY;
+  let pulseStartTimer;
+  let pulseInterval;
+
+  function startPulseCycle() {
+    pulseStartTimer = setTimeout(() => {
+      triggerPulse();
+      pulseInterval = setInterval(triggerPulse, 10000);
+    }, 3000);
+  }
+
+  function triggerPulse() {
+    btn.classList.add("pulse");
+
+    // now matches 2 second animation
+    setTimeout(() => {
+      btn.classList.remove("pulse");
+    }, 2000);
+  }
+
+  function stopPulseCycle() {
+    clearTimeout(pulseStartTimer);
+    clearInterval(pulseInterval);
+    btn.classList.remove("pulse");
+  }
+
+  window.addEventListener("scroll", function () {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY && currentScrollY > 5) {
+      if (!btn.classList.contains("show")) {
+        btn.classList.add("show");
+        startPulseCycle();
+      }
+    } else {
+      btn.classList.remove("show");
+      stopPulseCycle();
+    }
+
+    lastScrollY = currentScrollY;
+  });
+});
+</script>
+
 <a href="https://book.squareup.com/appointments/akl2v1sa6lvvyg/location/LPYHQ6EDHX53D/services" class="floating-book-btn">
-  Book Now - Limited Spots!
+  Book Now - Limited Availability!
 </a>
 </body>
 </html>
