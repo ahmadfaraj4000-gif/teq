@@ -39,6 +39,7 @@
 
 .nav {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   max-width: 1100px;
   margin: 0 auto;
@@ -54,7 +55,8 @@
   border-radius: 12px;
   background: rgba(0,0,0,0.04);
   transition: all 0.25s ease;
-  flex-shrink: 0;
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .brand img {
@@ -127,6 +129,7 @@
 
 /* ── HAMBURGER ── */
 .hamburger {
+  flex-shrink: 0;
   display: none;
   margin-left: auto;
   flex-direction: column;
@@ -215,26 +218,33 @@
 /* ── MOBILE ── */
 @media (max-width: 700px) {
   .header {
-    padding: 0.9rem 1rem;
+    padding: 0.75rem 1rem;
   }
 
   .nav {
-    min-height: 56px;
+    min-height: 52px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
   }
 
   .brand {
-    max-width: 75%;
-    padding: 6px 10px;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: calc(100% - 52px);
+    padding: 5px 10px;
   }
 
   .brand img {
-    height: 36px;
+    height: 34px;
+    flex-shrink: 0;
   }
 
   .nav-brand-text {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    min-width: 0;
   }
 
   .nav-center {
@@ -243,6 +253,8 @@
 
   .hamburger {
     display: flex;
+    flex-shrink: 0;
+    margin-left: 8px;
   }
 }
 
@@ -535,6 +547,7 @@
 
 <!-- ══ MOBILE MENU ══ -->
 <div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
   <a href="Packages.html">Packages</a>
   <a href="products.html">Products</a>
   <a href="newsletter.html">Newsletter</a>
@@ -686,7 +699,7 @@
       <p>49 Tolland Turnpike Suite 202</p>
       <p>Vernon, CT 06066</p>
       <a href="tel:8602304411" style="margin-top:8px;">860-230-4411</a>
-      <a href="mailto:techniqskinandbeauty@gmail.com">techniqskinandbeauty@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#245041474c4a4d55574f4d4a454a4046414551505d644349454d480a474b49"><span class="__cf_email__" data-cfemail="592d3c3a313730282a32303738373d3b3c382c2d20193e34383035773a3634">[email&#160;protected]</span></a>
     </div>
     <div class="footer-col">
       <h4>Hours</h4>
@@ -709,7 +722,7 @@
 </footer>
 
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   if (hamburger && mobileMenu) {
@@ -718,15 +731,4 @@
       mobileMenu.classList.toggle('open');
       document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
     });
-    mobileMenu.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    });
-  }
-</script>
-
-</body>
-</html>
+    mobile
