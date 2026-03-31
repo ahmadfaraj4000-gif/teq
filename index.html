@@ -457,42 +457,60 @@
 .story-strip {
   border-top: 1px solid rgba(0,0,0,0.07);
   border-bottom: 1px solid rgba(0,0,0,0.07);
-  padding: 32px 32px 56px;
+  padding: 72px 32px;
   background: rgba(255,255,255,0.55);
+  text-align: center;
 }
 
 .story-inner {
-  max-width: 1100px;
+  max-width: 720px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 170px minmax(0, 1fr);
-  gap: 28px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.story-eyebrow {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #9f7e6b;
+  margin-bottom: 14px;
+  display: block;
 }
 
 .story-label-col {
   font-family: 'Playfair Display', serif;
-  font-size: 1.9rem;
+  font-size: 2.2rem;
   font-weight: 400;
-  color: #9f7e6b;
+  color: #2f2f2f;
   line-height: 1.2;
+  margin-bottom: 28px;
+}
+
+.story-divider {
+  width: 48px;
+  height: 1.5px;
+  background: #EBBBA8;
+  border: none;
+  margin: 0 auto 32px;
 }
 
 .story-text {
-  max-width: 900px;
-  font-size: 15px;
-  line-height: 1.75;
+  font-size: 15.5px;
+  line-height: 1.85;
   color: #555;
   font-weight: 300;
+  text-align: center;
 }
 
 .story-text p {
-  margin: 0 0 12px;
-  line-height: 1.75;
+  margin: 0 0 16px;
 }
 
 .story-text p:last-child {
-  margin-bottom: 100;
+  margin-bottom: 0;
 }
 
     /* ── SERVICES ── */
@@ -861,14 +879,15 @@
 <!-- ══ OUR STORY ══ -->
 <div class="story-strip">
   <div class="story-inner">
-    <div class="story-label-col">Our<br>Story</div>
-  <div class="story-text">
-  <p>Techniq Skin & Beauty was created with one goal in mind: real results that last.</p>
-
-  <p>Located in Vernon, CT, and proudly serving clients from Vernon, Manchester, Rockville, and surrounding areas, every service is built on a results-driven approach tailored to your unique skin.</p>
-
-  <p>No rushed treatments. No guesswork. Every appointment begins with a thoughtful consultation to understand your skin, your concerns, and your goals—so we can create a treatment plan focused on long-term progress, not temporary results.</p>
-</div>
+    <span class="story-eyebrow">Who We Are</span>
+    <div class="story-label-col">Our Story</div>
+    <hr class="story-divider">
+    <div class="story-text">
+      <p>Techniq Skin &amp; Beauty was created with one goal in mind: real results that last.</p>
+      <p>Located in Vernon, CT, and proudly serving clients from Vernon, Manchester, Rockville, and surrounding areas, every service is built on a results-driven approach tailored to your unique skin.</p>
+      <p>No rushed treatments. No guesswork. Every appointment begins with a thoughtful consultation to understand your skin, your concerns, and your goals — so we can create a treatment plan focused on long-term progress, not temporary results.</p>
+    </div>
+  </div>
 </div>
 
 <!-- ══ SERVICES ══ -->
