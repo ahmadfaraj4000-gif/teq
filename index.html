@@ -316,6 +316,50 @@
   font-family: 'Inter', sans-serif;
 }
 
+/* ── MOBILE DRAWER (phone only) ── */
+@media (max-width: 700px) {
+  .mobile-menu {
+    top: 0;
+    left: auto;
+    right: 0;
+    bottom: auto;
+    width: 260px;
+    border-radius: 0 0 0 18px;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: -4px 8px 32px rgba(0,0,0,0.13);
+    padding: 70px 24px 28px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0;
+    transform: translateY(-110%);
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex !important;
+    z-index: 149;
+  }
+
+  .mobile-menu.open {
+    transform: translateY(0);
+  }
+
+  .mobile-menu a {
+    font-size: 1.1rem;
+    padding: 13px 0;
+    text-align: left;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    width: 100%;
+  }
+
+  .mobile-menu .mobile-book {
+    margin-top: 16px;
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    text-align: center;
+    width: 100%;
+  }
+}
+
 /* ── MOBILE ── */
 @media (max-width: 700px) {
   .header {
@@ -356,6 +400,15 @@
     display: flex;
     flex-shrink: 0;
     margin-left: 8px;
+    position: fixed;
+    top: 10px;
+    right: 14px;
+    z-index: 300;
+    background: rgba(255,255,255,0.92);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -809,6 +862,10 @@
     .floating-book-btn.pulse {
       animation: pulse 2s ease-in-out infinite;
     }
+    .highlight {
+      font-weight: 600;
+      color: #D9A48F; /* use your gold/beige accent */
+    }
 </style>
 </head>
 
@@ -883,9 +940,10 @@
     <div class="story-label-col">Our Story</div>
     <hr class="story-divider">
     <div class="story-text">
-      <p>Techniq Skin &amp; Beauty was created with one goal in mind: real results that last.</p>
-      <p>Located in Vernon, CT, and proudly serving clients from Vernon, Manchester, Rockville, and surrounding areas, every service is built on a results-driven approach tailored to your unique skin.</p>
-      <p>No rushed treatments. No guesswork. Every appointment begins with a thoughtful consultation to understand your skin, your concerns, and your goals — so we can create a treatment plan focused on long-term progress, not temporary results.</p>
+      <p>Techniq Skin &amp; Beauty was created with one goal in mind: 
+  <span class="highlight">real results that last</span>.</p>
+      <p>Serving clients in Vernon, CT, Manchester, Rockville, and surrounding areas, we offer customized facials, acne treatments, and advanced skincare services tailored to your unique skin using a results-driven approach.</p>
+      <p>Every appointment begins with a thoughtful consultation to understand your skin and build a plan for long-term progress, not just a quick fix. We also focus on client education, so you know exactly how to care for your skin and maintain your results at home.</p>
     </div>
   </div>
 </div>
@@ -989,7 +1047,7 @@
   <div class="final-cta-inner">
     <h2>Ready To Book?</h2>
    <p>
-      Healthy skin doesn’t happen in one appointment — it starts with consistency. If you’ve been thinking about starting your skincare journey or getting back on track, this is your sign. New clients are always welcome, and availability fills quickly.
+    Healthy skin doesn’t happen in one appointment, it starts with consistency. If you’ve been thinking about starting your skincare journey or getting back on track, this is your sign. Now accepting new clients. </p>
     </p>
     <a href="https://book.squareup.com/appointments/akl2v1sa6lvvyg/location/LPYHQ6EDHX53D/services" class="btn-primary">
       Book Your Appointment
@@ -1037,15 +1095,21 @@
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('open');
       mobileMenu.classList.toggle('open');
-      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
     });
 
     mobileMenu.querySelectorAll('a').forEach((a) => {
       a.addEventListener('click', () => {
         hamburger.classList.remove('open');
         mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
       });
+    });
+
+    // Close drawer when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      }
     });
   }
 
