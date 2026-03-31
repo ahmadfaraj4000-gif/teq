@@ -138,6 +138,7 @@
 
 .nav {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   max-width: 1100px;
   margin: 0 auto;
@@ -317,26 +318,33 @@
 /* ── MOBILE ── */
 @media (max-width: 700px) {
   .header {
-    padding: 0.9rem 1rem;
+    padding: 0.75rem 1rem;
   }
 
   .nav {
-    min-height: 56px;
+    min-height: 52px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
   }
 
   .brand {
-    max-width: calc(100% - 56px); /* leave room for hamburger */
-    padding: 6px 10px;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: calc(100% - 52px);
+    padding: 5px 10px;
   }
 
   .brand img {
-    height: 36px;
+    height: 34px;
+    flex-shrink: 0;
   }
 
   .nav-brand-text {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    min-width: 0;
   }
 
   .nav-center {
@@ -345,6 +353,8 @@
 
   .hamburger {
     display: flex;
+    flex-shrink: 0;
+    margin-left: 8px;
   }
 }
 
@@ -434,7 +444,7 @@
       border: 1px solid rgba(235,187,168,0.3);
       background: radial-gradient(500px 350px at 60% 30%, rgba(235,187,168,0.22), transparent 60%), rgba(245,241,238,0.9);
     }
-    .hero-logo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .hero-logo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; display: block; }
     .hero-photo-ph {
       width: 100%; height: 100%;
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
@@ -628,7 +638,7 @@
       .hero-split { grid-template-columns: 1fr; text-align: center; padding: 48px 24px 44px; gap: 32px; }
       .hero-sub { max-width: 100%; }
       .hero-actions { justify-content: center; }
-      .hero-logo-wrap { width: 230px; height: 230px; margin: 0 auto; }
+      .hero-logo-wrap { width: 280px; height: 340px; margin: 0 auto; }
       .story-inner { grid-template-columns: 1fr; gap: 14px; }
       .story-label-col { font-size: 1.45rem; }
       .services-grid { grid-template-columns: 1fr; }
@@ -950,7 +960,7 @@ Proudly serving clients across Vernon, Manchester, Rockville, and surrounding ar
       <p>49 Tolland Turnpike Suite 202</p>
       <p>Vernon, CT 06066</p>
       <a href="tel:8602304411" style="margin-top:8px;">860-230-4411</a>
-      <a href="mailto:techniqskinandbeautyllc@gmail.com">techniqskinandbeautyllc@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#a2d6c7c1cacccbd3d1c9cbccc3ccc6c0c7c3d7d6dbcecec1e2c5cfc3cbce8cc1cdcf"><span class="__cf_email__" data-cfemail="5d29383e3533342c2e3634333c33393f383c28292431313e1d3a303c3431733e3230">[email&#160;protected]</span></a>
     </div>
     <div class="footer-col">
       <h4>Hours</h4>
@@ -973,7 +983,7 @@ Proudly serving clients across Vernon, Manchester, Rockville, and surrounding ar
 </footer>
 
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Hamburger menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
